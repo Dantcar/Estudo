@@ -140,9 +140,9 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="57" pref="57" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnVoltar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnMostrar" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnListarCliente" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVoltar" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnMostrar" linkSize="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnListarCliente" linkSize="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
