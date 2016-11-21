@@ -46,7 +46,7 @@ public class AgendamentoDAO {
     private Statement stmt;
     private ResultSet rs;
     public int idAgendamentoNow = 0;
-
+    
     public AgendamentoDAO(Connection conexao, Statement stmt, ResultSet rs) {
         this.conexao = conexao;
         this.stmt = stmt;
@@ -54,6 +54,10 @@ public class AgendamentoDAO {
     }
 
     public AgendamentoDAO() {
+        String base = "Estudo";
+        String user = "APP";
+        String senha = "12345";
+        conexao = DBConexao.getConnection(base, user, senha);
     }
     
     
@@ -85,14 +89,14 @@ public class AgendamentoDAO {
      * serializar a tabela agendamento.
      * @return idAgendamento
      */
-    public int buscarIdAgendamentoAtual(){
+    public int buscarIdAgendamentoAtual(String base, String user, String senha){
         int resposta = 0;
         String msgOk, msg,sql;
         msgOk="";
         msg="";
         
         sql="SELECT * FROM agendamento ORDER BY 1 DESC";
-        conexao = DBConexao.getConnection();
+        conexao = DBConexao.getConnection(base, user, senha);
         ResultSet rs;
         rs = null;
         
@@ -140,7 +144,7 @@ public class AgendamentoDAO {
       msg="";
       msgOk="";
       
-      conexao = DBConexaoDBConexao.getConnection();
+      //conexao = DBConexao.getConnection();
       
       sql = "INSERT INTO agendamento VALUES ("
         + agendamento.getIdAgendamento() +", "
@@ -194,7 +198,7 @@ public class AgendamentoDAO {
         msg = "";
         msgOk = "";
         
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexaoDBConexao.getConnection();
         
         try {
             stmt = conexao.createStatement();
@@ -246,7 +250,7 @@ public class AgendamentoDAO {
         msg = "";
         msgOk = "";
         
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexao.getConnection();
         
         try {
             stmt = conexao.createStatement();
@@ -273,7 +277,7 @@ public class AgendamentoDAO {
                 msg = reduzString(msg+ex);
                 msg = reduzString(msg);
                 msg = msg+"Erro de gravação no BD \n";
-               Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
+               //Logger.getLogger(AnimalDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
            }else{
               msg = msg+"Dados do animal inalterados \n";  
@@ -310,12 +314,12 @@ public class AgendamentoDAO {
                 + " horaAgendamento = " + vHora;
         
         System.out.println(sql);
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexao.getConnection();
         ResultSet rs;
         rs = null;
         //listaAnimal = null;
         
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexao.getConnection();
         
         try {
             //preparacao para buscar no banco
@@ -353,7 +357,7 @@ public class AgendamentoDAO {
     public List<Agendamento> listarAgendamentoHorario(String vData, String vHora){
         Agendamento agendamento;
                 
-        List<Agendamento> listaAgendamento = new ArrayList<>();
+        List<Agendamento> listaAgendamento = new ArrayList<Agendamento>();
         //lista de agerndamentos na data e hora
         
         String msg, msgOk, sql;
@@ -366,7 +370,7 @@ public class AgendamentoDAO {
                 + "AND horaAgendamento = " + vHora;
         
         System.out.println(sql);
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexao.getConnection();
         ResultSet rs;
         rs = null;
         //listaAnimal = null;
@@ -431,7 +435,7 @@ public class AgendamentoDAO {
     public List<Agendamento> listarAgendamentoCliente(String vid){
       Agendamento agendamento;
                 
-        List<Agendamento> listaAgendamento = new ArrayList<>();
+        List<Agendamento> listaAgendamento = new ArrayList<Agendamento>();
         //lista de agerndamentos na data e hora
         
         String msg, msgOk, sql;
@@ -443,7 +447,7 @@ public class AgendamentoDAO {
             + " FROM agendamento WHERE clienteid = " + Integer.parseInt(vid);
         
         System.out.println(sql);
-        conexao = DBConexaoDBConexao.getConnection();
+        //conexao = DBConexao.getConnection();
         ResultSet rs;
         rs = null;
       
